@@ -103,14 +103,3 @@ class CloseApproach(object):
 	def __repr__(self):
 
 		return '<Close Approach Object> {}'.format(self.endpoint)
-
-
-
-
-
-
-
-
-
-
-
