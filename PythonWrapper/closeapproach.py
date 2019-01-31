@@ -10,8 +10,6 @@ This file wraps the Close Approach API
 	
 see https://ssd-api.jpl.nasa.gov/doc/cad.html for full query info
 
-This is the main class used to call the api and recieve data
-
 """
 import requests
 import pandas as pd
