@@ -4,17 +4,13 @@ Ryan Phillips - 2/1/19
 
 This file wraps the Close Approach API
 
-Usage:
 	CloseApproach(**kwargs)
 		- get pandas dataframes
 		- get json results
 	
-	see https://ssd-api.jpl.nasa.gov/doc/cad.html
-	for a list of possible kwargs to be passed or
-	see Examples/examples.py
+see https://ssd-api.jpl.nasa.gov/doc/cad.html for full query info
 
 This is the main class used to call the api and recieve data
-for the visual representation
 
 """
 import requests
@@ -23,11 +19,11 @@ from wrapper_errors import ParameterError
 
 
 
-def compute_t_sigma(t_sigma):
+def t_sigma_by_hour(t_sigma):
 	"""
-	T sigma is a str consisting of time-stamps
-	1_2:15 -> 1 hour, 2 mins, and 15 secs
-	rtype: int -> t_sigma in seconds only
+	3 sigma uncertainty (str)
+	1_2:15 -> 1 day, 2 hours, and 15 mins
+	rtype: int -> hours
 	"""
 	pass
 
@@ -92,7 +88,6 @@ class CloseApproach(object):
 
 	def scale_for_visualizer(self, epsilon):
 		"""Scale might be alright considering AU's"""
-
 		pass
 
 
@@ -103,3 +98,4 @@ class CloseApproach(object):
 	def __repr__(self):
 
 		return '<Close Approach Object> {}'.format(self.endpoint)
+		
