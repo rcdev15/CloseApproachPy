@@ -14,13 +14,12 @@ Usage:
 	see Examples/examples.py
 
 This is the main class used to call the api and recieve data
-for the graphic visual 
+for the visual representation
 
 """
 import requests
 import pandas as pd
 from wrapper_errors import ParameterError
-
 
 
 
@@ -30,16 +29,6 @@ def compute_t_sigma(t_sigma):
 	1_2:15 -> 1 hour, 2 mins, and 15 secs
 	rtype: int -> t_sigma in seconds only
 	"""
-	if t_sigma is None:
-
-		return
-
-	parts = t_sigma.split(':')
-
-	if '_' in parts[0]:
-
-		pass
-
 	pass
 
 
@@ -114,33 +103,6 @@ class CloseApproach(object):
 	def __repr__(self):
 
 		return '<Close Approach Object> {}'.format(self.endpoint)
-
-	@property
-	def meta(self):
-
-		return '{}'.format(self.params)
-
-
-
-if __name__ == '__main__':
-
-	test = CloseApproach(body = 'All')
-
-	pd.set_option('display.max_columns', 20)
-
-	df = test.get_frame()
-
-	if isinstance(df.ix[0,'v_rel'], float):
-
-		print('We good because ', df.ix[0, 'v_rel'] + df.ix[1, 'v_rel'])
-
-	else:
-
-		print('fucked up')
-
-	print(df)
-
-
 
 
 
