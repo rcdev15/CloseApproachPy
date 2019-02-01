@@ -131,15 +131,15 @@ def t_sigma_to_hours(time_list):
 	"""
 	if len(time_list) == 3:
 
-		return ((time_list[0] * 24) + time_list[1] + (time_list[2] / 24))
+		return ((time_list[0] * 24) + time_list[1] + (time_list[2] / 60))
 
 	elif len(time_list) == 2:
 
-		return (time_list[0] + (time_list[1] / 24))
+		return (time_list[0] + (time_list[1] / 60))
 
 	elif len(time_list) == 1:
 
-		return (time_list[0] / 24)
+		return (time_list[0] / 60)
 
 	else:
 
