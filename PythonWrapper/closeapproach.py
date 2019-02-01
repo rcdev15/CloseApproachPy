@@ -17,15 +17,6 @@ from wrapper_errors import ParameterError
 
 
 
-def t_sigma_by_hour(t_sigma):
-	"""
-	3 sigma uncertainty (str)
-	1_2:15 -> 1 day, 2 hours, and 15 mins
-	rtype: int -> hours
-	"""
-	pass
-
-
 class CloseApproach(object):
 
 	def __init__(self, **kwargs):
@@ -39,6 +30,7 @@ class CloseApproach(object):
 				for k_, v_ in v.items():
 
 					params[k_] = v_
+
 			else:
 
 				params[k] = v
@@ -96,4 +88,60 @@ class CloseApproach(object):
 	def __repr__(self):
 
 		return '<Close Approach Object> {}'.format(self.endpoint)
-		
+
+
+
+def t_sigma_to_list(t_sigma):
+	"""
+	Params: str -> 3 sigma uncertainty
+	1_2::15 -> 1 day, 2 hours, and 15 mins
+	rtype: list -> [days, hours, mins]
+	"""
+	times = []
+
+	for i in range(len(t_sigma)):
+
+		temp = ''
+
+		if t_sigma[i].isdigit():
+
+			temp += t_sigma[i]
+
+			for j in range(i+1, len(t_sigma)):
+
+				if t_sigma[j].isdigit():
+
+					temp += t_sigma[j]
+
+				else:
+
+					break
+
+		if temp:
+
+			times.append(float(temp))
+
+	return t_sigma_to_hours(times)
+
+
+def t_sigma_to_hours(time_list):
+	"""
+	Param: list -> [days, hours, mins]
+	rtype: float -> time in only hours
+	"""
+	if len(time_list) == 3:
+
+		return ((time_list[0] * 24) + time_list[1] + (time_list[2] / 24))
+
+	elif len(time_list) == 2:
+
+		return (time_list[0] + (time_list[1] / 24))
+
+	elif len(time_list) == 1:
+
+		return (time_list[0] / 24)
+
+	else:
+
+		return None
+
