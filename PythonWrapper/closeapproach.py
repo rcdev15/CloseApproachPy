@@ -91,7 +91,7 @@ class CloseApproach(object):
 
 
 
-def t_sigma_to_list(t_sigma):
+def t_sigma_convert(t_sigma):
 	"""
 	Params: str -> 3 sigma uncertainty
 	1_2::15 -> 1 day, 2 hours, and 15 mins
